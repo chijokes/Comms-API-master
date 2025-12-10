@@ -1,0 +1,30 @@
+@page "/sent-emails"
+@model FusionComms.Pages.MailJetMessagesModel
+@{
+    ViewData["Title"] = "Sent MailJet Messages";
+}
+
+<h2>Sent MailJet Messages</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>To</th>
+            <th>Template Id</th>
+            <th>Subject</th>
+            <th>Body</th>
+            <th>Sent At</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var msg in Model.SentMessages)
+    {
+        <tr>
+            <td>@msg.RecipientAddress</td>
+            <td>@msg.TemplateId</td>
+            <td>@msg.Subject</td>
+            <td>@msg.Message</td>
+            <td>@msg.SentAt.ToString("g")</td>
+        </tr>
+    }
+    </tbody>
+</table>
